@@ -17,6 +17,14 @@ public class Main {
         content = removeXtraSpace(content);
         System.out.println("\nAfter removing extra spaces:");
         System.out.println(content);
+
+        content = toLower(content);
+        System.out.println("\nAfter transforming to lowercase:");
+        System.out.println(content);
+
+        content = filterByLength(content , 4);
+        System.out.println("\nAfter filtering words by (4) letters:");
+        System.out.println(content);
     }
 
     public static String readFile(String filePath)
@@ -43,4 +51,22 @@ public class Main {
         return text.replaceAll("\\s+"," ");// /s+ mai multe spatii (se pare)
     }
 
+    public static String toLower(String text)
+    {
+        return text.toLowerCase();
+    }
+
+    public static String filterByLength(String text, int n)
+    {
+        String[] w = text.split(" ");
+        String r = "";
+        for (String word : w)
+        {
+            if(word.length() == n)
+            {
+                r = r + word + " ";
+            }
+        }
+        return r;
+    }
 }
